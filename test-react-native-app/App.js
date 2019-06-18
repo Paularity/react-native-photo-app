@@ -4,6 +4,8 @@ import * as Font from 'expo-font';
 import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import ApiKeys from './constants/ApiKeys';
+import * as firebase from 'firebase';
 
 import AppNavigator from './navigation/AppNavigator';
 
@@ -30,6 +32,7 @@ export default function App(props) {
 
 async function loadResourcesAsync() {
   await Promise.all([
+    initializeFirebase,
     Asset.loadAsync([
       require('./assets/images/robot-dev.png'),
       require('./assets/images/robot-prod.png'),
@@ -42,6 +45,12 @@ async function loadResourcesAsync() {
       'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
     }),
   ]);
+}
+
+function initializeFirebase()
+{
+  if( !firebase.apps.length )
+    firebase.initializeApp(ApiKeys.FirebaseConfig);
 }
 
 function handleLoadingError(error: Error) {
