@@ -1,4 +1,3 @@
-import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {
   Image,
@@ -10,19 +9,14 @@ import {
   View,
   ActivityIndicator
 } from 'react-native';
-import { MonoText } from '../components/StyledText';
-import { TestComponent } from './../components/AppComponents';
 import * as firebase from 'firebase';
-import MyIcon from './../components/MyIcon';
+import Colors from './../../constants/Colors';
 
-export default function TestScreen() {
+export default function ProfileScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
-        <MonoText>Home Screen</MonoText>
-      </View>
-      <View style={styles.contentContainer}>
-        <TestComponent />
+        <Text>Profile</Text>
       </View>
       <TouchableOpacity style={styles.btn} onPress={ onSignout } >
         <Text style={{ color: '#fff', textTransform: 'uppercase' }}>Signout</Text>
@@ -51,11 +45,11 @@ const styles = StyleSheet.create({
 
   btn: {
     borderRadius: 50,
-    borderColor: '#800',
+    borderColor: Colors.darkColor,
     borderWidth: 1,    
     padding: 10,
     marginTop: 5,
-    backgroundColor: '#FE434C',
+    backgroundColor: Colors.primaryColor,
     alignItems: 'center',
     width: 200,
     height: 40

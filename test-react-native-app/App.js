@@ -11,6 +11,7 @@ import AppNavigator from './navigation/AppNavigator';
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
+  
 
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return (
@@ -32,7 +33,7 @@ export default function App(props) {
 
 async function loadResourcesAsync() {
   await Promise.all([
-    initializeFirebase,
+    initializeFirebase(),
     Asset.loadAsync([
       require('./assets/images/robot-dev.png'),
       require('./assets/images/robot-prod.png'),
@@ -47,16 +48,16 @@ async function loadResourcesAsync() {
   ]);
 }
 
-function initializeFirebase()
-{
-  if( !firebase.apps.length )
+function initializeFirebase() {
+  if (!firebase.apps.length) {
     firebase.initializeApp(ApiKeys.FirebaseConfig);
+  }
 }
 
-function handleLoadingError(error: Error) {
+function handleLoadingError(error) {
   // In this case, you might want to report the error to your error reporting
   // service, for example Sentry
-  console.warn(error);
+  console.error(error);
 }
 
 function handleFinishLoading(setLoadingComplete) {

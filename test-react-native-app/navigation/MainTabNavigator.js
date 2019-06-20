@@ -22,6 +22,4 @@ TestStack.navigationOptions = {
   ),
 };
 
-export default createBottomTabNavigator({
-  TestStack,
-});
+export default createBottomTabNavigator({ TestStack });
