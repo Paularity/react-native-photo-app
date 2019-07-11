@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 
-export default class TestComponent extends Component
+export default function TestComponent(props)
 {
-    render() {
-        return <Text>Test Component</Text>
-    }
+    return <Text>{ props.favoriteAnimal }</Text>
 }

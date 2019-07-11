@@ -9,18 +9,30 @@ const MenuIcon = (navigation) => <Icon name="menu" size={35} color='#000' style=
 
 const TestStack = createStackNavigator(
     {
-        Test: { screen: TestScreen }
+        Test: {
+            screen: TestScreen,
+            navigationOptions: () => ({
+                title: `Test`,
+            }),
+        }
     },
     {
         defaultNavigationOptions: ({ navigation }) => {
-            return { headerLeft: MenuIcon(navigation) };
+            return {
+                headerLeft: MenuIcon(navigation)
+            };
         }
     }
 );
 
 const ProfileStack = createStackNavigator(
-    {        
-        Profile: { screen: ProfileScreen }
+    {
+        Profile: { 
+            screen: ProfileScreen,
+            navigationOptions: () => ({
+                title: `Profile`,
+            }),
+        }
     },
     {
         defaultNavigationOptions: ({ navigation }) => {
@@ -35,11 +47,11 @@ export default createDrawerNavigator(
         Profile: ProfileStack
     },
     {
-        contentOptions: 
+        contentOptions:
         {
             activeTintColor: Colors.primaryColor,
         }
-    }    
+    }
 );
 
 
